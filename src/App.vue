@@ -35,7 +35,7 @@ export default {
         ['3', 'mdi-account-group'],
         ['4', 'mdi-alien'],
       ]),
-      fieldMap: Map([
+      fieldMap: new Map([
         [2, 'https://cdn.discordapp.com/attachments/766231770445512715/786534037024014336/ryan-o-connor-tileable-grass.png'],
         [1, 'https://cdn.discordapp.com/attachments/766231770445512715/786534077545185300/dbwm528-78b11079-6ce9-4182-9166-d6c07af7d494.png'],
         [0, 'https://cdn.discordapp.com/attachments/766231770445512715/786534055566376990/f1a7ed42b092b013089dafb1774ef2ea.png']
@@ -106,12 +106,12 @@ export default {
   created: function() {
     this.websocket = new WebSocket("ws://" + this.server + "/websocket");
 
-    this.connection.onopen = function() {
+    this.websocket.onopen = function() {
       console.log("Trying to connect to Server");
-      this.conenction.send("Trying to connect to Server");
+      this.send("Trying to connect to Server");
     };
 
-    this.connection.onmessage = function(e) {
+    this.websocket.onmessage = function(e) {
       if (typeof e.data === "string") {
         console.log('String message received: ' + e.data);
 
