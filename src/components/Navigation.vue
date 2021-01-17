@@ -50,27 +50,6 @@ export default {
     };
   },
   methods: {
-    buy: function (){
-      if (coord0set && !coord1set) command('/buy/' + $('#coord0').text())
-    },
-    combine: function (){
-      if (coord0set && coord1set) command('/cmb/' + $('#coord0').text() + '/' + $('#coord1').text())
-    },
-    move: function (){
-      if (coord0set && coord1set) command('/mov/' + $('#coord0').text() + '/' + $('#coord1').text())
-    },
-    castle: function (){
-      if (coord0set && !coord1set) command('/plc/' + $('#coord0').text())
-    },
-    balance: function (){
-      if (coord0set && !coord1set) command('/bal/' + $('#coord0').text())
-    },
-    endturn: function (){
-      command('/end')
-    },
-    surrender: function (){
-      if (confirm('Are you sure you want to surrender?')) command('/ff20')
-    },
   },
 };
 </script>

@@ -1,4 +1,3 @@
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <template>
   <v-app>
   <navigation></navigation>
@@ -7,7 +6,6 @@
     </v-main>
   </v-app>
 </template>
-
 
 <script>
 import Navigation from "./components/Navigation";
@@ -19,10 +17,6 @@ export default {
   components: {
     Navigation,
     Main
-  },
-
-  data: () => ({
-    //
-  })
+  }
 };
 </script>
