@@ -89,10 +89,8 @@
 
 <script>
 export default {
-  name: "Main",
-  methods: {
 
-  }
+  name: "Main",
 }
 </script>
 
