@@ -1,12 +1,17 @@
 <template>
- <span>
-   {{ grid}}
- </span>
+  <div class="grid-container">
+    <div v-for="idx in colSize" :key="idx" class="grid-item c0" style="background: #343a40; color: #fff;">{{colIdx(idx)}}</div>
+    <div v-for="(value, index) in grid" :key="index" :id="index" :class="[playerClass(value.owner)]" class="clickable ">
+      <v-img max-width="4vw" min-width="40" :src="fieldImage(value.owner)" style="display: flex; align-items: center;">
+        <v-icon :color="gpColor(value)" x-large style="display: flex; justify-content: center;">
+          {{gp(value.gamepiece, value.owner)}}
+        </v-icon>
+      </v-img>
+    </div>
+  </div>
 </template>
 
 <script>
-//import $ from "jquery";
-
 export default {
   name: "Gameboard",
   computed: {
@@ -17,29 +22,6 @@ export default {
   mounted() {
     this.$store.dispatch("getData")
   }
-  /*
-created: function(){
-console.log(this.$store.state.server)
-axios.get('http://' + this.$store.state.server + '/json').then(response => {
-  console.log(response.data)
-  this.updateStore(response.data)
-}).catch(e => {
-  console.log(e)
-})
-
-$.ajax({
-  method: "GET",
-  url: "http://" + this.$store.state.server + "/json",
-  dataType: "json",
-  async: false,
-  success: function(result){
-    // console.log("get /json:" + JSON.stringify(result))
-    this.updateStore(result)
-  }
-});
-
-}
- */
 }
 </script>
 
