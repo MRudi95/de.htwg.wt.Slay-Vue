@@ -4,18 +4,13 @@
       cols="12"
       class="py-2"
   >
-
-
     <v-btn-toggle
         tile
         color="deep-purple accent-3"
         group
-        v-model="icon"
         borderless
     >
       <v-btn v-on:click="buy" value="left">
-
-
         <v-icon left>
           mdi-currency-usd
         </v-icon>
@@ -84,13 +79,28 @@
       <v-btn text color="primary" id="coord1"></v-btn>
     </template>
   </v-banner>
+
+    <gameboard></gameboard>
     </span>
 </template>
 
 <script>
-export default {
+import Gameboard from "./Gameboard";
 
+export default {
   name: "Main",
+  components: {
+    Gameboard
+  },
+  methods: {
+    buy: function(){alert(1)},
+    combine: function(){},
+    move: function(){},
+    castle: function(){},
+    balance: function(){},
+    endturn: function(){},
+    surrender: function(){}
+  }
 }
 </script>
 

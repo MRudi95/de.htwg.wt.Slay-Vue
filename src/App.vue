@@ -115,19 +115,24 @@ export default {
       if (typeof e.data === "string") {
         console.log('String message received: ' + e.data);
 
-        $.each(JSON.parse(e.data), function(key, val){
-          if(key === "fields"){
-            //update fields
-            this.updateGrid(val);
-          } else if(key === "message"){
-            //error message
-            document.getElementById("gameMsg").innerText = val;
-          } else if(key === "player"){
-            //next player
-            document.getElementById("playername").innerText = "It is your turn " + val.playername + "!";
-            document.getElementById("playercolor").className = "v-avatar accent-4 " + val.playercolor;
-          }
-        });
+        try {
+          $.each(JSON.parse(e.data), function(key, val){
+            if(key === "fields"){
+              //update fields
+              this.updateGrid(val);
+            } else if(key === "message"){
+              //error message
+              document.getElementById("gameMsg").innerText = val;
+            } else if(key === "player"){
+              //next player
+              document.getElementById("playername").innerText = "It is your turn " + val.playername + "!";
+              document.getElementById("playercolor").className = "v-avatar accent-4 " + val.playercolor;
+            }
+          });
+        }
+        catch(e) {
+          console.log("JSON error")
+        }
       }
     }
   }
