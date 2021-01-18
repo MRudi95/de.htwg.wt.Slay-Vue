@@ -24,7 +24,9 @@ export default {
     };
   },
   created: function() {
-    this.websocket = new WebSocket("ws://" + this.$store.state.serverUrl + "/websocket");
+    this.websocket = new WebSocket(
+      "ws://" + this.$store.state.serverUrl + "/websocket"
+    );
 
     this.websocket.onopen = function() {
       console.log("[WS] Opening websocket to server ..");
@@ -39,20 +41,20 @@ export default {
           $.each(JSON.parse(e.data), function(key, val) {
             if (key === "fields") {
               //update fields
-              this.updateGrid(val);
+              // this.updateGrid(val);
             } else if (key === "message") {
               //error message
               document.getElementById("gameMsg").innerText = val;
             } else if (key === "player") {
               //next player
               document.getElementById("playername").innerText =
-                "It is your turn " + val.playername + "!";
+                "It is your turn ";
               document.getElementById("playercolor").className =
-                "v-avatar accent-4 " + val.playercolor;
+                "v-avatar accent-4 ";
             }
           });
         } catch (e) {
-          console.log("[WS] Got a non-JSON object back ..")
+          console.log("[WS] Got a non-JSON object back ..");
         }
       }
     };
