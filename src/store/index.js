@@ -6,6 +6,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    serverUrl: "localhost:9000",
     grid: [],
   },
   mutations: {
@@ -15,7 +16,7 @@ export default new Vuex.Store({
   },
   actions: {
     getData({ commit }) {
-      axios.get('http://localhost:9000/json').then(response => {
+      axios.get('http://' + this.state.serverUrl + '/json').then(response => {
         commit('SET_GRID', response.data)
       })
     }

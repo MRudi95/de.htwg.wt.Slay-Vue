@@ -1,4 +1,6 @@
 <template>
+  <div>{{ grid }}</div>
+  <!--
   <div class="grid-container">
     <div v-for="idx in colSize" :key="idx" class="grid-item c0" style="background: #343a40; color: #fff;">{{colIdx(idx)}}</div>
     <div v-for="(value, index) in grid" :key="index" :id="index" :class="[playerClass(value.owner)]" class="clickable ">
@@ -9,6 +11,7 @@
       </v-img>
     </div>
   </div>
+  -->
 </template>
 
 <script>
@@ -25,5 +28,4 @@ export default {
 }
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>
