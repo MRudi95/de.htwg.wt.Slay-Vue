@@ -23,7 +23,18 @@ export default {
       websocket: null
     };
   },
+  methods: {
+    async accept() {
+      this.showUpgradeUI = false
+      await this.$workbox.messageSW({ type: "SKIP_WAITING" });
+    }
+  },
   created: function() {
+    if (this.$workbox) {
+      this.$workbox.addEventListener("waiting", () => {
+        this.showUpgradeUI = true;
+      });
+    }
     this.websocket = new WebSocket(
       "ws://" + this.$store.state.serverUrl + "/websocket"
     );

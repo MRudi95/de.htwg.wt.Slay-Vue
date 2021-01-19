@@ -57,7 +57,7 @@
           mdi-gamepad-variant
         </v-icon>
       </v-avatar>
-      <span id="gameMsg"></span>
+      <span id="gameMsg">Waiting for player to start ..</span>
       <span id="playername"></span>
       <template v-slot:actions>
         <v-btn text color="primary" id="coord0"></v-btn>
@@ -90,4 +90,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+#gameMsg {
+  color: blueviolet;
+}
+</style>

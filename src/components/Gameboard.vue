@@ -19,13 +19,13 @@ export default {
   name: "Gameboard",
   computed: {
     grid() {
-      return this.$store.state.grid
+      return this.$store.state.grid;
     }
   },
   mounted() {
-    this.$store.dispatch("getData")
+    this.$store.dispatch("getData");
   }
-}
+};
 </script>
 
 <style scoped></style>
