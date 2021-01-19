@@ -5,10 +5,11 @@ import store from "./store";
 import vuetify from "./plugins/vuetify";
 import axios from "axios";
 import VueAxios from "vue-axios";
-//import "./registerServiceWorker";
-import wb from "./registerServiceWorker";
 
-Vue.prototype.$workbox = wb;
+//import "./registerServiceWorker";
+import "./registerServiceWorker";
+
+//Vue.prototype.$workbox = wb;
 Vue.config.productionTip = false;
 
 new Vue({
