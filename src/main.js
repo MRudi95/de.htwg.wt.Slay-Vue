@@ -7,7 +7,7 @@ import axios from "axios";
 import VueAxios from "vue-axios";
 
 //import "./registerServiceWorker";
-import "./registerServiceWorker";
+import "./service-worker";
 
 //Vue.prototype.$workbox = wb;
 Vue.config.productionTip = false;

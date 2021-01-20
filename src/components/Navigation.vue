@@ -23,12 +23,12 @@
           <v-list-item-title>About / Help</v-list-item-title>
         </v-list-item-content>
       </v-list-item>
-      <v-list-item to="/undo">
+      <v-list-item v-on:click="undo">
         <v-list-item-content>
           <v-list-item-title>Undo</v-list-item-title>
         </v-list-item-content>
       </v-list-item>
-      <v-list-item to="/redo">
+      <v-list-item v-on:click="redo">
         <v-list-item-content>
           <v-list-item-title>Redo</v-list-item-title>
         </v-list-item-content>
@@ -44,12 +44,24 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "Navigation",
   methods: {
     redirect: function() {
       window.location.href = "http://www.windowsgames.co.uk/slay.html";
-    }
+    },
+    undo: function() {
+      axios.get("http://" + this.$store.state.serverUrl + "/undo").then(response => {
+        console.log("undo: " + response.statusText)
+      });
+    },
+    redo: function() {
+      axios.get("http://" + this.$store.state.serverUrl + "/redo").then(response => {
+        console.log("redo: " + response.statusText)
+      });
+    },
   },
   data() {
     return {
