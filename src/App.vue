@@ -12,7 +12,6 @@
 <script>
 import Navigation from "./components/Navigation";
 import Main from "./components/Main";
-// import $ from "jquery";
 
 export default {
   name: "App",

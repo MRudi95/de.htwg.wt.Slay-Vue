@@ -1,6 +1,6 @@
 <template>  
   <v-container class="grid-container grey lighten-5" mt-10>
-    <div v-for="(value, index) in fields" :key="index" :id="index" :class="[playerClass(value.owner)]">
+    <div v-for="(value, index) in fields" :key="index" :id="index">
       <v-hover>
         <template v-slot:default="{ hover }">
           <v-card tile :color="playerMap[value.owner]">
@@ -64,13 +64,9 @@ export default {
         ["2A", "light-green lighten-3"],
         ["2M", "light-green darken-4"],
       ]),
-      loading: false,
     };
   },
   methods: {
-    colIdx: function(index) {
-      return String.fromCharCode(index + 64);
-    },
     gamepieceIcon: function(gamepiece, owner) {
       if (gamepiece === "T") {
         return this.pieceMap.get(gamepiece + owner);
@@ -89,9 +85,6 @@ export default {
       let colidx = String.fromCharCode(idnumber % (this.columns) + 65);
       let rowIdx = Math.floor(idnumber / (this.columns)) + 1
       return colidx + rowIdx;
-    },
-    playerClass: function(owner){
-      return 'c' + owner;
     },
     coordClick: function(idx){
       const newCoord = this.getIndex(idx);
@@ -128,14 +121,5 @@ export default {
     display: grid;
     grid-template-columns: repeat(16, 1fr);
     width: 64vw;
-  }
-
-  .grid-item {
-      background-color: rgba(255, 255, 255, 0.8);
-      border: 1px solid #343a40;
-      padding: 1vw;
-      width: 4vw;
-      min-width: 40px;
-      text-align: center;
   }
 </style>
