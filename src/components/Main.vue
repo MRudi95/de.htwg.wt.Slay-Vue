@@ -46,10 +46,11 @@
         </v-btn>
       </v-btn-toggle>
     </v-col>
+
     <v-banner two-line>
       <v-avatar
         slot="icon"
-        color="deep-purple accent-4"
+        color="black"
         size="40"
         id="playercolor"
       >
@@ -57,13 +58,16 @@
           mdi-gamepad-variant
         </v-icon>
       </v-avatar>
+
       <span id="gameMsg">Waiting for player to start ..</span>
+
       <span id="playername"></span>
       <template v-slot:actions>
         <v-btn text color="primary" id="coord0"></v-btn>
         <v-btn text color="primary" id="coord1"></v-btn>
       </template>
     </v-banner>
+
     <gameboard></gameboard>
   </span>
 </template>
@@ -92,6 +96,6 @@ export default {
 
 <style scoped>
 #gameMsg {
-  color: blueviolet;
+  color: #333;
 }
 </style>
