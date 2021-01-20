@@ -1,16 +1,32 @@
 <template>
-  <v-container class="grey lighten-5" mt-10>
-    <!--<v-col v-for="head in columns" :key="head">{{colIdx(head)}}</v-col>-->
-    <v-row v-for="row in 1" :key="row" no-gutters>
-      <v-col v-for="(value, index) in fields" :id="index" :key="index">
-        <v-card class="pa-2" outlined tile :color=playerMap[value.owner]>
-          <v-icon x-large style="display: flex; justify-content: center;">
-            {{gp(value.gamepiece, value.owner)}}
-          </v-icon>
-        </v-card>
-      </v-col>
-    </v-row>
-  </v-container>
+  <span>
+    <v-container class="grey lighten-5" mt-10>
+      <!--<v-col v-for="head in columns" :key="head">{{colIdx(head)}}</v-col>-->
+      <v-row v-for="row in 1" :key="row" no-gutters>
+        <v-col v-for="(value, index) in fields" :id="index" :key="index">
+          <v-hover>
+            <template v-slot:default="{ hover }">
+              <v-card
+                class="pa-2"
+                outlined
+                tile
+                :color="playerMap[value.owner]"
+              >
+                <v-icon x-large style="display: flex; justify-content: center;">
+                  {{ gp(value.gamepiece, value.owner) }}
+                </v-icon>
+                <v-fade-transition>
+                  <v-overlay v-if="hover" absolute color="#036358">
+                    <v-btn>{{ getIndex(index) }}</v-btn>
+                  </v-overlay>
+                </v-fade-transition>
+              </v-card>
+            </template>
+          </v-hover>
+        </v-col>
+      </v-row>
+    </v-container>
+  </span>
   <!--
   <div class="grid-container">
     <div v-for="idx in colSize" :key="idx" class="grid-item c0" style="background: #343a40; color: #fff;">{{colIdx(idx)}}</div>
@@ -42,7 +58,8 @@ export default {
         ["2", "mdi-account-multiple"],
         ["3", "mdi-account-group"],
         ["4", "mdi-alien"]
-      ])
+      ]),
+      loading: false
     };
   },
   methods: {
@@ -58,6 +75,11 @@ export default {
     },
     gp: function(gp, owner) {
       return this.gamepieceIcon(gp, owner);
+    },
+    getIndex: function(idnumber){
+      let colidx = String.fromCharCode(idnumber % (this.columns) + 65);
+      let rowIdx = Math.floor(idnumber / (this.columns)) + 1
+      return colidx + rowIdx;
     }
   },
   computed: {
