@@ -11,30 +11,30 @@ const store = new Vuex.Store({
     grid: [],
     coord0: "",
     coord1: "",
-    msg: "Waiting for Player to start...",
+    msg: "Waiting for Player to start ..",
     playername: "",
-    playercolor: "purple",
+    playercolor: "purple"
   },
   mutations: {
     SET_GRID(state, grid) {
       state.grid = grid;
       console.log("UPDATED GRID");
     },
-    SET_COORD0(state, coord){
+    SET_COORD0(state, coord) {
       state.coord0 = coord;
     },
-    SET_COORD1(state, coord){
+    SET_COORD1(state, coord) {
       state.coord1 = coord;
     },
-    SET_MSG(state, msg){
+    SET_MSG(state, msg) {
       state.msg = msg;
     },
-    SET_PLAYERNAME(state, name){
+    SET_PLAYERNAME(state, name) {
       state.playername = name;
     },
-    SET_PLAYERCOLOR(state, color){
+    SET_PLAYERCOLOR(state, color) {
       state.playercolor = color;
-    },
+    }
   },
   actions: {
     getData({ commit }) {
@@ -48,9 +48,7 @@ const store = new Vuex.Store({
 });
 export default store;
 
-const websocket = new WebSocket(
-  "ws://" + store.state.serverUrl + "/websocket"
-);
+const websocket = new WebSocket("ws://" + store.state.serverUrl + "/websocket");
 
 websocket.onopen = function() {
   console.log("[WS] Opening websocket to server ..");
@@ -80,6 +78,3 @@ websocket.onmessage = function(e) {
     }
   }
 };
-
-
-

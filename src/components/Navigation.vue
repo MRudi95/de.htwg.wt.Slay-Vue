@@ -7,7 +7,7 @@
     </v-app-bar>
     <v-navigation-drawer v-model="drawer" clipped app>
       <template v-slot:prepend>
-        <v-list-item two-line style="padding-top: 2rem;">
+        <v-list-item two-line to="/" style="padding-top: 2rem;">
           <v-list-item-avatar
             ><img src="../assets/htwg.png"
           /></v-list-item-avatar>
@@ -33,11 +33,6 @@
           <v-list-item-title>Redo</v-list-item-title>
         </v-list-item-content>
       </v-list-item>
-      <v-list-item @click="redirect">
-        <v-list-item-content>
-          <v-list-item-title>Go to Original Game</v-list-item-title>
-        </v-list-item-content>
-      </v-list-item>
       <v-divider></v-divider>
     </v-navigation-drawer>
   </span>
@@ -49,19 +44,20 @@ import axios from "axios";
 export default {
   name: "Navigation",
   methods: {
-    redirect: function() {
-      window.location.href = "http://www.windowsgames.co.uk/slay.html";
-    },
     undo: function() {
-      axios.get("http://" + this.$store.state.serverUrl + "/undo").then(response => {
-        console.log("undo: " + response.statusText)
-      });
+      axios
+        .get("http://" + this.$store.state.serverUrl + "/undo")
+        .then(response => {
+          console.log("undo: " + response.statusText);
+        });
     },
     redo: function() {
-      axios.get("http://" + this.$store.state.serverUrl + "/redo").then(response => {
-        console.log("redo: " + response.statusText)
-      });
-    },
+      axios
+        .get("http://" + this.$store.state.serverUrl + "/redo")
+        .then(response => {
+          console.log("redo: " + response.statusText);
+        });
+    }
   },
   data() {
     return {

@@ -3,7 +3,7 @@
     <v-app>
       <navigation></navigation>
       <v-main>
-        <Main></Main>
+        <router-view></router-view>
       </v-main>
     </v-app>
   </span>
@@ -11,13 +11,11 @@
 
 <script>
 import Navigation from "./components/Navigation";
-import Main from "./components/Main";
 
 export default {
   name: "App",
   components: {
-    Navigation,
-    Main
+    Navigation
   },
   data: function() {
     return {
