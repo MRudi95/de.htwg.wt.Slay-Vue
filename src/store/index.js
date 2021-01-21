@@ -7,7 +7,7 @@ Vue.use(Vuex);
 
 const store = new Vuex.Store({
   state: {
-    serverUrl: "localhost:9000",
+    serverUrl: "slay-backend-server.herokuapp.com",
     grid: [],
     coord0: "",
     coord1: "",
@@ -38,7 +38,7 @@ const store = new Vuex.Store({
   },
   actions: {
     getData({ commit }) {
-      axios.get("http://" + this.state.serverUrl + "/json").then(response => {
+      axios.get("https://" + this.state.serverUrl + "/json").then(response => {
         commit("SET_GRID", response.data);
       });
     }
@@ -48,7 +48,7 @@ const store = new Vuex.Store({
 });
 export default store;
 
-const websocket = new WebSocket("ws://" + store.state.serverUrl + "/websocket");
+const websocket = new WebSocket("wss://" + location.host + "/websocket");
 
 websocket.onopen = function() {
   console.log("[WS] Opening websocket to server ..");

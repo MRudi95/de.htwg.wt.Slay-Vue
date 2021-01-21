@@ -48,12 +48,7 @@
     </v-col>
 
     <v-banner two-line>
-      <v-avatar
-        slot="icon"
-        :color="playerColor"
-        size="40"
-        id="playercolor"
-      >
+      <v-avatar slot="icon" :color="playerColor" size="40" id="playercolor">
         <v-icon icon="mdi-gamepad-variant" color="white">
           mdi-gamepad-variant
         </v-icon>
@@ -63,8 +58,22 @@
       <span id="gameMsg">{{ message }}</span>
 
       <template v-slot:actions>
-        <v-btn text color="primary" id="coord0" v-on:click="coord0Click" v-show="coord0Show">{{ coord0 }}</v-btn>
-        <v-btn text color="primary" id="coord1" v-on:click="coord1Click" v-show="coord1Show">{{ coord1 }}</v-btn>
+        <v-btn
+          text
+          color="primary"
+          id="coord0"
+          v-on:click="coord0Click"
+          v-show="coord0Show"
+          >{{ coord0 }}</v-btn
+        >
+        <v-btn
+          text
+          color="primary"
+          id="coord1"
+          v-on:click="coord1Click"
+          v-show="coord1Show"
+          >{{ coord1 }}</v-btn
+        >
       </template>
     </v-banner>
 
@@ -83,68 +92,71 @@ export default {
   },
   methods: {
     buy: function() {
-      this.sendCommand(`/buy/${this.coord0}`)
+      this.sendCommand(`/buy/${this.coord0}`);
     },
     combine: function() {
-      this.sendCommand(`/cmb/${this.coord0}/${this.coord1}`)
+      this.sendCommand(`/cmb/${this.coord0}/${this.coord1}`);
     },
     move: function() {
-      this.sendCommand(`/mov/${this.coord0}/${this.coord1}`)
+      this.sendCommand(`/mov/${this.coord0}/${this.coord1}`);
     },
     castle: function() {
-      this.sendCommand(`/plc/${this.coord0}`)
+      this.sendCommand(`/plc/${this.coord0}`);
     },
     balance: function() {
-      this.sendCommand(`/bal/${this.coord0}`)
+      this.sendCommand(`/bal/${this.coord0}`);
     },
     endturn: function() {
-      this.sendCommand('/end')
+      this.sendCommand("/end");
     },
     surrender: function() {
-      if (confirm('Are you sure you want to surrender?')) this.sendCommand('/ff20')
+      if (confirm("Are you sure you want to surrender?"))
+        this.sendCommand("/ff20");
     },
 
-    sendCommand: function(commandstring){
-      axios.get("http://" + this.$store.state.serverUrl + commandstring).then(response => {
-        console.log(commandstring + ": " + response.statusText)
-      });
+    sendCommand: function(commandstring) {
+      axios
+        .get("https://" + this.$store.state.serverUrl + commandstring)
+        .then(response => {
+          console.log(commandstring + ": " + response.statusText);
+        });
     },
-    coord0Click: function(){
+    coord0Click: function() {
       this.$store.commit("SET_COORD0", "");
     },
-    coord1Click: function(){
+    coord1Click: function() {
       this.$store.commit("SET_COORD1", "");
-    },
+    }
   },
   computed: {
-    coord0(){
+    coord0() {
       return this.$store.state.coord0;
     },
-    coord1(){
+    coord1() {
       return this.$store.state.coord1;
     },
-    coord0Show(){
+    coord0Show() {
       return this.coord0 != "";
     },
-    coord1Show(){
+    coord1Show() {
       return this.coord1 != "";
     },
 
-    message(){
+    message() {
       return this.$store.state.msg;
     },
-    playerName(){
+    playerName() {
       return this.$store.state.playername;
     },
-    playerColor(){
+    playerColor() {
       return this.$store.state.playercolor;
-    },
-  },
+    }
+  }
 };
 </script>
 
 <style scoped>
-  #gameMsg {
-    color: #333;
-  }
+#gameMsg {
+  color: #333;
+}
 </style>
