@@ -44,6 +44,18 @@
           </v-icon>
           <span class="hidden-sm-and-down">Surrender</span>
         </v-btn>
+        <v-btn v-on:click="undo" value="right">
+          <v-icon left>
+            mdi-undo
+          </v-icon>
+          <span class="hidden-sm-and-down">Undo</span>
+        </v-btn>
+        <v-btn v-on:click="redo" value="right">
+          <v-icon left>
+            mdi-redo
+          </v-icon>
+          <span class="hidden-sm-and-down">Redo</span>
+        </v-btn>
       </v-btn-toggle>
     </v-col>
     <v-banner two-line>
@@ -122,6 +134,20 @@ export default {
     },
     coord1Click: function() {
       this.$store.commit("SET_COORD1", "");
+    },
+    undo: function() {
+      axios
+        .get("http://" + this.$store.state.serverUrl + "/undo")
+        .then(response => {
+          console.log("undo: " + response.statusText);
+        });
+    },
+    redo: function() {
+      axios
+        .get("http://" + this.$store.state.serverUrl + "/redo")
+        .then(response => {
+          console.log("redo: " + response.statusText);
+        });
     }
   },
   computed: {
