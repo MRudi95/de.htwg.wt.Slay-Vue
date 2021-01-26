@@ -48,35 +48,36 @@
     </v-col>
 
     <v-banner two-line>
-      <v-avatar slot="icon" :color="playerColor" size="40" id="playercolor">
-        <v-icon icon="mdi-gamepad-variant" color="white">
-          mdi-gamepad-variant
-        </v-icon>
-      </v-avatar>
+
 
       <span id="playername">{{ playerName }}</span>
-      <span id="gameMsg">{{ message }}</span>
+    <v-alert
+        dense
+        type="info"
+        id="gameMsg"
+    >{{ message }}
+    </v-alert>
 
-      <template v-slot:actions>
+
+    </v-banner>
+<template v-slot:actions>
         <v-btn
-          text
-          color="primary"
-          id="coord0"
-          v-on:click="coord0Click"
-          v-show="coord0Show"
-          >{{ coord0 }}</v-btn
+            text
+            color="primary"
+            id="coord0"
+            v-on:click="coord0Click"
+            v-show="coord0Show"
+        >{{ coord0 }}</v-btn
         >
         <v-btn
-          text
-          color="primary"
-          id="coord1"
-          v-on:click="coord1Click"
-          v-show="coord1Show"
-          >{{ coord1 }}</v-btn
+            text
+            color="primary"
+            id="coord1"
+            v-on:click="coord1Click"
+            v-show="coord1Show"
+        >{{ coord1 }}</v-btn
         >
       </template>
-    </v-banner>
-
     <gameboard></gameboard>
   </span>
 </template>

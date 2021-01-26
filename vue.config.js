@@ -25,7 +25,7 @@ module.exports = {
     manifestOptions: {
       name: "Slay PWA",
       short_name: "Slay",
-      start_url: "/",
+      start_url: "/assets/play/",
       display: "fullscreen" //standalone
     }
   }

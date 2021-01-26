@@ -59,14 +59,15 @@
       </v-btn-toggle>
     </v-col>
     <v-banner two-line>
-      <v-avatar slot="icon" :color="playerColor" size="40" id="playercolor">
-        <v-icon icon="mdi-gamepad-variant" color="white">
-          mdi-gamepad-variant
-        </v-icon>
-      </v-avatar>
       <span id="playername">{{ playerName }}</span>
-      <span id="gameMsg">{{ message }}</span>
-      <template v-slot:actions>
+          <v-alert
+              dense
+              type="info"
+              id="gameMsg"
+              color=""
+          >{{ message }}
+    </v-alert>
+
         <v-btn
           text
           color="primary"
@@ -83,7 +84,7 @@
           v-show="coord1Show"
           >{{ coord1 }}</v-btn
         >
-      </template>
+
     </v-banner>
     <gameboard></gameboard>
   </span>
@@ -124,7 +125,7 @@ export default {
 
     sendCommand: function(commandstring) {
       axios
-        .get("http://" + this.$store.state.serverUrl + commandstring)
+        .get("https://" + this.$store.state.serverUrl + commandstring)
         .then(response => {
           console.log(commandstring + ": " + response.statusText);
         });
@@ -137,14 +138,14 @@ export default {
     },
     undo: function() {
       axios
-        .get("http://" + this.$store.state.serverUrl + "/undo")
+        .get("https://" + this.$store.state.serverUrl + "/undo")
         .then(response => {
           console.log("undo: " + response.statusText);
         });
     },
     redo: function() {
       axios
-        .get("http://" + this.$store.state.serverUrl + "/redo")
+        .get("https://" + this.$store.state.serverUrl + "/redo")
         .then(response => {
           console.log("redo: " + response.statusText);
         });
@@ -178,7 +179,4 @@ export default {
 </script>
 
 <style scoped>
-#gameMsg {
-  color: #333;
-}
 </style>

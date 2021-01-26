@@ -13,7 +13,8 @@ const store = new Vuex.Store({
     coord1: "",
     msg: "Waiting for Player to start ..",
     playername: "",
-    playercolor: "purple"
+    playercolor: "purple",
+    code: ""
   },
   mutations: {
     SET_GRID(state, grid) {
@@ -32,6 +33,9 @@ const store = new Vuex.Store({
     SET_PLAYERNAME(state, name) {
       state.playername = name;
     },
+    SET_CODE(state, code) {
+      state.code = code;
+    },
     SET_PLAYERCOLOR(state, color) {
       state.playercolor = color;
     }
@@ -48,7 +52,7 @@ const store = new Vuex.Store({
 });
 export default store;
 
-const websocket = new WebSocket("wss://" + location.host + "/websocket");
+const websocket = new WebSocket("wss://slay-backend-server.herokuapp.com/websocket");
 
 websocket.onopen = function() {
   console.log("[WS] Opening websocket to server ..");
@@ -67,6 +71,9 @@ websocket.onmessage = function(e) {
         } else if (key === "message") {
           //error message
           store.commit("SET_MSG", val);
+        } else if (key === "code") {
+          //error message
+          store.commit("SET_CODE", val);
         } else if (key === "player") {
           //next player
           store.commit("SET_PLAYERNAME", `It is your turn ${val.playername}!`);
