@@ -9,8 +9,8 @@ const store = new Vuex.Store({
   state: {
     serverUrl: "slay-backend-server.herokuapp.com",
     grid: [],
-    coord0: "",
-    coord1: "",
+    coord0: "00",
+    coord1: "00",
     msg: "Waiting for Player to start ..",
     playername: "",
     playercolor: "purple",

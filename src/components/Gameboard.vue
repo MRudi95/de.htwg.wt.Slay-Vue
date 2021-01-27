@@ -108,16 +108,16 @@ export default {
     coordClick: function(idx) {
       const newCoord = this.getIndex(idx);
       console.log("CLICKED " + newCoord);
-      if (this.$store.state.coord0 === "") {
+      if (this.$store.state.coord0 === "00") {
         this.$store.commit("SET_COORD0", newCoord);
       } else if (
-        this.$store.state.coord1 === "" &&
+        this.$store.state.coord1 === "00" &&
         this.$store.state.coord0 !== newCoord
       ) {
         this.$store.commit("SET_COORD1", newCoord);
       } else {
         this.$store.commit("SET_COORD0", newCoord);
-        this.$store.commit("SET_COORD1", "");
+        this.$store.commit("SET_COORD1", "00");
       }
     }
   },

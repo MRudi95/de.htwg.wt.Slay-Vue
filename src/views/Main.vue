@@ -115,6 +115,12 @@ export default {
       if (confirm("Are you sure you want to surrender?"))
         this.sendCommand("/ff20");
     },
+    undo: function() {
+      this.sendCommand("/undo");
+    },
+    redo: function() {
+      this.sendCommand("/redo");
+    },
 
     sendCommand: function(commandstring) {
       axios
@@ -124,25 +130,12 @@ export default {
         });
     },
     coord0Click: function() {
-      this.$store.commit("SET_COORD0", "");
+      this.$store.commit("SET_COORD0", "00");
     },
     coord1Click: function() {
-      this.$store.commit("SET_COORD1", "");
+      this.$store.commit("SET_COORD1", "00");
     },
-    undo: function() {
-      axios
-        .get("https://" + this.$store.state.serverUrl + "/undo")
-        .then(response => {
-          console.log("undo: " + response.statusText);
-        });
-    },
-    redo: function() {
-      axios
-        .get("https://" + this.$store.state.serverUrl + "/redo")
-        .then(response => {
-          console.log("redo: " + response.statusText);
-        });
-    }
+    
   },
   computed: {
     coord0() {
@@ -152,10 +145,10 @@ export default {
       return this.$store.state.coord1;
     },
     coord0Show() {
-      return this.coord0 !== "";
+      return this.coord0 !== "00";
     },
     coord1Show() {
-      return this.coord1 !== "";
+      return this.coord1 !== "00";
     },
 
     message() {
