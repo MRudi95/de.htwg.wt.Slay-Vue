@@ -48,36 +48,27 @@
     </v-col>
 
     <v-banner two-line>
-
-
       <span id="playername">{{ playerName }}</span>
-    <v-alert
-        dense
-        type="info"
-        id="gameMsg"
-    >{{ message }}
-    </v-alert>
-
-
+      <v-alert dense type="info" id="gameMsg">{{ message }} </v-alert>
     </v-banner>
-<template v-slot:actions>
-        <v-btn
-            text
-            color="primary"
-            id="coord0"
-            v-on:click="coord0Click"
-            v-show="coord0Show"
+    <template v-slot:actions>
+      <v-btn
+        text
+        color="primary"
+        id="coord0"
+        v-on:click="coord0Click"
+        v-show="coord0Show"
         >{{ coord0 }}</v-btn
-        >
-        <v-btn
-            text
-            color="primary"
-            id="coord1"
-            v-on:click="coord1Click"
-            v-show="coord1Show"
+      >
+      <v-btn
+        text
+        color="primary"
+        id="coord1"
+        v-on:click="coord1Click"
+        v-show="coord1Show"
         >{{ coord1 }}</v-btn
-        >
-      </template>
+      >
+    </template>
     <gameboard></gameboard>
   </span>
 </template>

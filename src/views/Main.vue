@@ -60,31 +60,24 @@
     </v-col>
     <v-banner two-line>
       <span id="playername">{{ playerName }}</span>
-          <v-alert
-              dense
-              type="info"
-              id="gameMsg"
-              color=""
-          >{{ message }}
-    </v-alert>
+      <v-alert dense type="info" id="gameMsg" color="">{{ message }} </v-alert>
 
-        <v-btn
-          text
-          color="primary"
-          id="coord0"
-          v-on:click="coord0Click"
-          v-show="coord0Show"
-          >{{ coord0 }}</v-btn
-        >
-        <v-btn
-          text
-          color="primary"
-          id="coord1"
-          v-on:click="coord1Click"
-          v-show="coord1Show"
-          >{{ coord1 }}</v-btn
-        >
-
+      <v-btn
+        text
+        color="primary"
+        id="coord0"
+        v-on:click="coord0Click"
+        v-show="coord0Show"
+        >{{ coord0 }}</v-btn
+      >
+      <v-btn
+        text
+        color="primary"
+        id="coord1"
+        v-on:click="coord1Click"
+        v-show="coord1Show"
+        >{{ coord1 }}</v-btn
+      >
     </v-banner>
     <gameboard></gameboard>
   </span>
@@ -178,5 +171,4 @@ export default {
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>
