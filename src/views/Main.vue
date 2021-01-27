@@ -59,7 +59,6 @@
       </v-btn-toggle>
     </v-col>
     <v-banner two-line>
-      <span id="playername">{{ playerName }}</span>
       <v-alert dense type="info" id="gameMsg" color="">{{ message }} </v-alert>
 
       <v-btn

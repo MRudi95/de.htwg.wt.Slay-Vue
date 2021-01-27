@@ -48,7 +48,6 @@
     </v-col>
 
     <v-banner two-line>
-      <span id="playername">{{ playerName }}</span>
       <v-alert dense type="info" id="gameMsg">{{ message }} </v-alert>
     </v-banner>
     <template v-slot:actions>
